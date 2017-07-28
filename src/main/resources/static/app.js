@@ -1,6 +1,6 @@
 (function () {
     var springBootAws = angular.module('SpringBootAwsDemo', 
-    		['ngRoute','ngCookies','angularUtils.directives.dirPagination']);
+    		['ngRoute','ngCookies','SpringBootAwsDemo.directive','angularUtils.directives.dirPagination']);
 
     springBootAws.directive('active', function ($location) {
         return {
@@ -311,6 +311,7 @@
                                }
                             }
                         }
+
                     }
 
                     return response || $q.when(response);
