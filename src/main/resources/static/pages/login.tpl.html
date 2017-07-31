@@ -27,6 +27,8 @@
 				            	class="form-control" id="password" name="password" ng-model="loginCtrl.model.password"/>
 			          	</div>
 				    </div>
+				     <label><input type="checkbox" ng-model="loginCtrl.model.keepMeLogin">Keep me signed in</label>
+				   <!--  <input type="hidden" id="keepMeLogin" name="keepMeLogin" ng-model="loginCtrl.model.keepMeLogin" value="true"/> -->
 				    <div class="form-group">
 		                <div class="col-sm-offset-10 col-sm-12">		                
 		                	<button ng-click="loginCtrl.login()" class="btn btn-primary" ng-disabled="saving"><i ng-show="saving" class="fa fa-refresh fa-spin fa-1x"></i> Login</button>	                    

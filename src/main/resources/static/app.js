@@ -131,6 +131,7 @@
         	var formData = new FormData();
         	formData.append('email', loginModel.email);
         	formData.append('password', loginModel.password);
+        	formData.append('keepMeLogin', loginModel.keepMeLogin);
         		
         	$scope.saving=true;
         	$http.post('/spring-boot-aws/login', formData, {	
@@ -311,7 +312,6 @@
                                }
                             }
                         }
-
                     }
 
                     return response || $q.when(response);

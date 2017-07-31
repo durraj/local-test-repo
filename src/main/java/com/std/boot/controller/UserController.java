@@ -140,7 +140,7 @@ public class UserController extends APIUtil{
 	    public String login(
 	    		@RequestParam(value="email", required=true) String email,
 	            @RequestParam(value="password", required=true) String password,
-	            @RequestParam Boolean keepMeLogin
+	            @RequestParam(value="keepMeLogin", required=true) Boolean keepMeLogin
 	    ) {
 
 	        if ("".equals(email) || "".equals(password)) {
