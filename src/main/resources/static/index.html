@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!--Import script libraries-->
+        <script src="lib/js/lodash.js"></script>
+        <script src="lib/js/jquery.js"></script>
+        <script src="lib/js/jquery.prettyPhoto.js"></script>
+        <script src="lib/js/jquery.scrollUp.min.js"></script>
+        <script src="lib/js/price-range.js"></script>
+        <script src="lib/js/bootstrap.min.js"></script>
+        <script src="lib/js/bootstrap-select.min.js"></script>
     <!-- libraries -->
    <!--  <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
@@ -22,6 +30,8 @@
     <script src="lib/js/moment.min.js"></script>    
     <script src="lib/js/underscore.js"></script>  
     <script src="lib/js/rzslider.js"></script> 
+    <script src="lib/js/i18next-1.8.0.min.js"></script>
+    
    <!--  <script src="lib/js/jquery.noty.packaged.min.js"></script>  -->
     
    <script src="app.js"></script>
@@ -31,15 +41,27 @@
      <script src="scripts/constant.js"></script>
      <script src="scripts/all_service.js"></script>
      <script src="scripts/all_directive.js"></script>
+     <script src="scripts/controller/login_ctrl.js"></script>
 
     <link rel="stylesheet" href="lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/css/font-awesome-4.5.0/css/font-awesome.min.css">    
     <link rel="stylesheet" href="app.css">
+    <!-- <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+  	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  	<link href="css/jquery.bxslider.css" rel="stylesheet" type="text/css" />
+  	<link href="css/cloud-zoom.css" rel="stylesheet" type="text/css" />
+  	<link href="css/nivo-slider.css" rel="stylesheet" type="text/css" />
+  	<link href="css/animate.css" rel="stylesheet" type="text/css" />
+  	<link href="css/owl.carousel.css" rel="stylesheet" type="text/css" />
+  	<link href="css/style.css" rel="stylesheet" type="text/css" />
+  	<link href="css/responsive.css" rel="stylesheet" type="text/css" />
+  	<link href="css/style-green.css" rel="stylesheet" type="text/css" />
+  	<link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body role="document">
 
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default" role="navigation">
+<!-- <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#/home">Spring Boot AWS Demo</a>
@@ -53,10 +75,11 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
 
+<div ng-include="'pages/headerNav.html'"></div>
 <div class="container" role="main" ng-view>
 </div>
-
+<div ng-include="'pages/footer.html'"></div>
 </body>
 </html>

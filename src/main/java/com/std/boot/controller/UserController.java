@@ -3,14 +3,25 @@ package com.std.boot.controller;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.json.JSONObject;
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
+import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.NonTransientResourceException;
+import org.springframework.batch.item.ParseException;
+import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -51,6 +62,9 @@ import com.std.boot.model.UserProfile;
 import com.std.boot.model.UserToken;
 //import com.std.out.ResultJson;
 import com.std.common.util.Constant;
+import com.std.dto.DealDTO;
+import com.std.dto.DealsDTO;
+import com.std.integration.scheduler.RESTDealJobLauncher;
 
 @RestController
 public class UserController extends APIUtil{
@@ -68,6 +82,9 @@ public class UserController extends APIUtil{
 	    private STDResultResponse resultJson;*/
 	    @Autowired
 	    private UserTokenService userTokenService;
+	    
+	    @Autowired
+	    private ItemReader itemReader;
 	    
 	   /* @Autowired
 	    private STDBCryptPasswordEncoder bCryptPasswordEncoder;*/
@@ -136,12 +153,15 @@ public class UserController extends APIUtil{
 	    	
 	    }*/
 	    
-	    @RequestMapping(value = "/login", method = RequestMethod.POST)
-	    public String login(
+	    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	    public String login(/*HttpServletRequest request,*/
 	    		@RequestParam(value="email", required=true) String email,
 	            @RequestParam(value="password", required=true) String password,
 	            @RequestParam(value="keepMeLogin", required=true) Boolean keepMeLogin
 	    ) {
+	    	/*String email= request.getParameter("email");
+	    	String password= request.getParameter("password");
+	    	boolean keepMeLogin=true;*/
 
 	        if ("".equals(email) || "".equals(password)) {
 	            // invalid paramaters
@@ -191,19 +211,17 @@ public class UserController extends APIUtil{
 
 	        return writeObjectToJson(statusResponse);
 	    }
-	    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+	    @RequestMapping(value = "/registration", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	    public String register(
 	    		 @RequestParam(value="firstName", required=true) String firstName,
 		            @RequestParam(value="lastName", required=true) String lastName,
 		            @RequestParam(value="email", required=true) String email,
 		            @RequestParam(value="password", required=true) String password,
-		            @RequestParam(value="confirmpassword", required=true) String confirmpassword,
-	            @PathVariable Long companyId,
-	            @RequestBody User user
+		            @RequestParam(value="confirmpassword", required=true) String confirmpassword
 	    ) {
 
 	        // check user already exists
-	        User existed = userService.getUserByEmail(user.getEmail());
+	        User existed = userService.getUserByEmail(email);
 	        if (existed == null) {
 	            // email is valid to create user
 	           // String email = user.getEmail(),
@@ -221,12 +239,12 @@ public class UserController extends APIUtil{
 
 	                User userSignUp = new User();
 	                userSignUp.setUserId(UniqueID.getUUID());
-	                userSignUp.setCompanyId(companyId);
+	                //userSignUp.setCompanyId(companyId);
 	                userSignUp.setCreateDate(new Date());
 	                userSignUp.setEmail(email);
-	                userSignUp.setFirstName(user.getFirstName());
-	                userSignUp.setLastName(user.getLastName());
-	                userSignUp.setMiddleName(user.getMiddleName());
+	                userSignUp.setFirstName(firstName);
+	                userSignUp.setLastName(lastName);
+	                userSignUp.setMiddleName("");
 	                userSignUp.setSalt(UniqueID.getUUID());
 
 	                try {

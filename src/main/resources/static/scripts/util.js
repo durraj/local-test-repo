@@ -9,7 +9,7 @@
 angular.module( 'SpringBootAwsDemo' )
 
 // Utilities for our app
-.factory( 'util', [ '$http', '$q', 'server', '$log', '_', 'api', '$modal', '$i18next', function ( $http, $q, server, $log, _, api, $modal, $i18next ) {
+.factory( 'util', [ '$http', '$q', 'server', '$log', '_', 'api'/*, '$uibModal'*//*, '$i18next'*/, function ( $http, $q, server, $log, _, api/*, $uibModal*//*, $i18next */) {
         
     // Check array has all empty value or not
     // Example [ '', '', '' ]
@@ -32,8 +32,11 @@ angular.module( 'SpringBootAwsDemo' )
         
         // Create interceptor request
         callRequest: function ( api, method, data, abstractUrl ) {
-            
             var apiName = api, m = method, d = data;
+           /* transformRequest : angular.identity,
+            headers : {
+            	'Content-Type' : undefined
+            };*/
             
             if ( angular.isObject( api ) ) {
                 
@@ -56,7 +59,8 @@ angular.module( 'SpringBootAwsDemo' )
                 callRequest.params = d;
             } else {
                 callRequest.method = m || 'POST';
-                callRequest.data = d;
+                //callRequest.data = d;
+                callRequest.params = d;
             }
             
             $http( callRequest ).then( function ( result ) {
@@ -94,10 +98,10 @@ angular.module( 'SpringBootAwsDemo' )
         },
         
         // Get text from path
-        translate: function ( path ) {
+        /*translate: function ( path ) {
             
             return $i18next( path );
-        },
+        },*/
         
         // Escape HTML
         escape: function ( text ) {
@@ -135,17 +139,17 @@ angular.module( 'SpringBootAwsDemo' )
                 };
             }
             
-            var instance = $modal.open( setting );
-            
-            // Bind event dismiss modal
-            instance.result.then( function ( type ) {
-                
-                if ( typeof dismissCallback === 'function' )
-                    dismissCallback( type );
-                
-            });
-            
-            return instance;
+//            var instance = $uibModal.open( setting );
+//            
+//            // Bind event dismiss modal
+//            instance.result.then( function ( type ) {
+//                
+//                if ( typeof dismissCallback === 'function' )
+//                    dismissCallback( type );
+//                
+//            });
+//            
+//            return instance;
         },
         
         isInt: function (value) {

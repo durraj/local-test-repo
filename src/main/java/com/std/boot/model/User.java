@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
     @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
-    @NamedQuery(name = "User.findByCompanyId", query = "SELECT u FROM User u WHERE u.companyId = :companyId"),
+  //  @NamedQuery(name = "User.findByCompanyId", query = "SELECT u FROM User u WHERE u.companyId = :companyId"),
     @NamedQuery(name = "User.findByRoleId", query = "SELECT u FROM User u WHERE u.roleId = :roleId"),
     @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
     @NamedQuery(name = "User.findByPasswordHash", query = "SELECT u FROM User u WHERE u.passwordHash = :passwordHash"),
@@ -40,9 +40,9 @@ public class User implements Serializable {
     @Column(name = "user_id")
     private String userId;
     
-    @Basic(optional = false)
+    /*@Basic(optional = false)
     @Column(name = "company_id")
-    private Long companyId;
+    private Long companyId;*/
     
     @Basic(optional = false)
     @Column(name = "role_id")
@@ -88,9 +88,9 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public User(String userId, Long companyId, int roleId, String email, String passwordHash, String firstName, String lastName, int status, Date createDate, String salt) {
+    public User(String userId, int roleId, String email, String passwordHash, String firstName, String lastName, int status, Date createDate, String salt) {
         this.userId = userId;
-        this.companyId = companyId;
+        //this.companyId = companyId;
         this.roleId = roleId;
         this.email = email;
         this.passwordHash = passwordHash;
@@ -109,13 +109,13 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public Long getCompanyId() {
+   /* public Long getCompanyId() {
         return companyId;
     }
 
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
-    }
+    }*/
 
     public int getRoleId() {
         return roleId;

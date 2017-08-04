@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "UserToken.findAll", query = "SELECT u FROM UserToken u"),
     @NamedQuery(name = "UserToken.findByToken", query = "SELECT u FROM UserToken u WHERE u.token = :token"),
-    @NamedQuery(name = "UserToken.findByCompanyId", query = "SELECT u FROM UserToken u WHERE u.companyId = :companyId"),
+    //@NamedQuery(name = "UserToken.findByCompanyId", query = "SELECT u FROM UserToken u WHERE u.companyId = :companyId"),
     @NamedQuery(name = "UserToken.findByUserId", query = "SELECT u FROM UserToken u WHERE u.userId = :userId"),
     @NamedQuery(name = "UserToken.findByLoginDate", query = "SELECT u FROM UserToken u WHERE u.loginDate = :loginDate"),
     @NamedQuery(name = "UserToken.findByExpirationDate", query = "SELECT u FROM UserToken u WHERE u.expirationDate = :expirationDate")})
@@ -32,9 +32,9 @@ public class UserToken implements Serializable {
     @Column(name = "token")
     private String token;
     
-    @Basic(optional = false)
+    /*@Basic(optional = false)
     @Column(name = "company_id")
-    private Long companyId;
+    private Long companyId;*/
     
     @Basic(optional = false)
     @Column(name = "user_id")
@@ -57,9 +57,9 @@ public class UserToken implements Serializable {
         this.token = token;
     }
 
-    public UserToken(String token, Long companyId, String userId, Date loginDate, Date expirationDate) {
+    public UserToken(String token, String userId, Date loginDate, Date expirationDate) {
         this.token = token;
-        this.companyId = companyId;
+       //this.companyId = companyId;
         this.userId = userId;
         this.loginDate = loginDate;
         this.expirationDate = expirationDate;
@@ -73,13 +73,13 @@ public class UserToken implements Serializable {
         this.token = token;
     }
 
-    public Long getCompanyId() {
+    /*public Long getCompanyId() {
         return companyId;
     }
 
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
-    }
+    }*/
 
     public String getUserId() {
         return userId;

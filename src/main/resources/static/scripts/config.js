@@ -8,13 +8,13 @@
 
 angular.module( 'SpringBootAwsDemo' )
 
-/*.constant( 'server',  {
+.constant( 'server',  {
 
     // Local
-    URL: 'http://localhost:8080/api/v1/1'
+    URL: 'http://localhost:8080/spring-boot-aws/'
     // Server
     //URL: 'http://52.196.33.166/marketplace-rest-api'
-})*/
+})
 
 // Hold app info
 .constant( 'app', {

@@ -1,6 +1,14 @@
 (function () {
     var springBootAws = angular.module('SpringBootAwsDemo', 
-    		['ngRoute','ngCookies','SpringBootAwsDemo.directive','angularUtils.directives.dirPagination']);
+    			[
+    				//'ui.bootstrap',
+    				'ngRoute',
+    			'ngCookies',
+    			'SpringBootAwsDemo.directive',
+    			'SpringBootAwsDemo.login',
+    			//'ui.router',
+    			/*'jm.i18next',*/
+    			'SpringBootAwsDemo.authen','angularUtils.directives.dirPagination']);
 
     springBootAws.directive('active', function ($location) {
         return {
@@ -77,7 +85,15 @@
         self.register = function () {            
         	var customerModel = self.model;        	
         	var savedCustomer;
-        	
+        	if (customerModel.password === undefined || customerModel.email === undefined) {
+
+                $scope.alerts = [{
+                        type: 'danger',
+                        msg: "Invalid ID or password"
+                    }];
+
+                return;
+            }
         	var formData = new FormData();
         	formData.append('firstName', customerModel.firstName);
         	formData.append('lastName', customerModel.lastName);
@@ -92,6 +108,7 @@
         	//formData.append('postcode', customerModel.address.postcode);
         		
         	$scope.saving=true;
+        	
         	$http.post('/spring-boot-aws/registration', formData, {	
         	    transformRequest : angular.identity,
     			headers : {
@@ -99,17 +116,17 @@
     			}
     		}).success(function(savedCustomer) {
     			$scope.saving=false;
-    			$location.path("/view-customer/" + savedCustomer.id);    			
+    			$location.path("/");    			
     		}).error(function(data) {
     			$scope.saving=false; 
     		});
         };
     });
     
-    springBootAws.controller('LoginCtrl', function ($scope, $location, $http) {
+   /* springBootAws.controller('LoginCtrl', function ($scope, $location, $http) {
         var self = this;
         $scope.dataLoading=false
-        /*$http.get('/spring-boot-aws/login/').then(function onSuccess(response) {
+        $http.get('/spring-boot-aws/login/').then(function onSuccess(response) {
         	if(response.values.loggedIn)
         		{
         			$scope.dataLoading=true;
@@ -122,7 +139,7 @@
         }, function onError(response) {
         	scope.dataLoading=false;
 			$scope.loginLoading=true;
-        });*/
+        });
         self.login = function () {            
         	var loginModel = self.model;        	
         	var savedCustomer;
@@ -149,7 +166,7 @@
     			$scope.saving=false; 
     		});
         };
-    });
+    });*/
     
     springBootAws.controller('ViewCustomerCtrl', function ($scope, $http, $routeParams) {
         
@@ -328,13 +345,27 @@
     }])
     
     springBootAws.config(function ($routeProvider) {
-        $routeProvider.when('/home', {templateUrl: 'pages/home.tpl.html'});
+        //$routeProvider.when('/home', {templateUrl: 'pages/home.tpl.html'});
+    	$routeProvider.when('/home', {templateUrl: 'pages/list-details.tpl.html'});
         $routeProvider.when('/create-customer', {templateUrl: 'pages/createCustomer.tpl.html'});
         $routeProvider.when('/view-customer/:customerId', {templateUrl: 'pages/viewCustomer.tpl.html'});
         $routeProvider.when('/view-all-customers', {templateUrl: 'pages/viewAllCustomers.tpl.html'});
         $routeProvider.when('/register', {templateUrl: 'pages/register.tpl.html'});
-        $routeProvider.when('/login', {templateUrl: 'pages/login.tpl.html'});
+        $routeProvider.when('/sign-in', {templateUrl: 'pages/sign-in.tpl.html'});
         $routeProvider.otherwise({redirectTo: '/home'});
     });
     
 }());
+/*angular.module('jm.i18next').config(['$i18nextProvider', function ( $i18nextProvider ) {
+	
+	// Configure multi language
+	$i18nextProvider.options = {
+			lng: 'en',
+			useCookie: false,
+			useLocalStorage: false,
+			debug: true,
+			// fallbackLng: 'dev',
+			resGetPath: 'i18n/en.json',
+			defaultLoadingValue: 'Loading' // ng-i18next option, *NOT* directly supported by i18next
+	};
+}]);*/

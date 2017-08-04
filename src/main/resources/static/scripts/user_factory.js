@@ -1,7 +1,7 @@
 
 'use strict';
 
-angular.module( 'springBootAws.authen', ['ngCookies'] )
+angular.module( 'SpringBootAwsDemo.authen', ['ngCookies'] )
 
 .factory('user', ['$rootScope', '$location', '$injector', 'util', 'app', '$q', 'api', '$cookieStore', '$timeout', function( $rootScope, $location, $injector, util, app, $q, api, $cookieStore, $timeout ) {
    
@@ -175,7 +175,7 @@ angular.module( 'springBootAws.authen', ['ngCookies'] )
             // Call login
             util.callRequest(api.REGISTER.name, api.REGISTER.type, credential).then(function (result) {
                 // Check result returned
-                if ('authInfor' in result) {
+                if ('result' in result) {
                     // Get user info
                     angular.extend(user.info, result.authInfor);
                     // Set token
@@ -194,20 +194,31 @@ angular.module( 'springBootAws.authen', ['ngCookies'] )
         // Do login
         login: function (credential, callback) {
             var that = this;
+            /*var formData = new FormData();
+        	formData.append('email', credential.email);
+        	formData.append('password', credential.password);
+        	formData.append('keepMeLogin', credential.keepMeLogin);*/
             // Call login
-            util.callRequest(api.LOGIN.name, api.LOGIN.type, {
-                
-                email: credential.email,
-                password: credential.password,
-                keepMelogin: credential.keepMeLogin
+            util.callRequest(api.LOGIN.name, api.LOGIN.type, /*formData,*/{
+            	/*transformRequest : angular.identity,
+            	headers : {
+    				'Content-Type' : undefined
+    			},*/
+            	/*var formData = new FormData();
+            	formData.append('email', credential.email);
+            	formData.append('password', credential.password);
+            	formData.append('keepMeLogin', credential.keepMeLogin);*/
+                "email": credential.email,
+                "password": credential.password,
+                "keepMeLogin": credential.keepMeLogin
                 
             }).then(function (result) {
                 // Check result returned
-                if ('authInfor' in result) {
+                if ('token' in result) {
                     // Get user info
-                    angular.extend(user.info, result.authInfor);
+                    angular.extend(user.info, result);
                     // Set token
-                    service.token(result.authInfor.userTokens);
+                    service.token(result.result.token);
                     // Invoke success authen
                     that.authenticationSuccessHandler();
                 } else
