@@ -5,7 +5,7 @@
  */
 'use strict';
 
-angular.module('SpringBootAwsDemo.directive', [ 'components'])
+angular.module('CouponMaster.directive', [ 'components'])
 
 // Using for list using datatable
 .directive( 'datatable', [ '$', 'checkbox', 'app', '_', function ( $, checkbox, app, _ ) {

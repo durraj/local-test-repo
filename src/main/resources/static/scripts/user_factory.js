@@ -1,7 +1,7 @@
 
 'use strict';
 
-angular.module( 'SpringBootAwsDemo.authen', ['ngCookies'] )
+angular.module( 'CouponMaster.authen', ['ngCookies'] )
 
 .factory('user', ['$rootScope', '$location', '$injector', 'util', 'app', '$q', 'api', '$cookieStore', '$timeout', function( $rootScope, $location, $injector, util, app, $q, api, $cookieStore, $timeout ) {
    
@@ -65,8 +65,9 @@ angular.module( 'SpringBootAwsDemo.authen', ['ngCookies'] )
         },
        
        // Success handler
-       authenticationSuccessHandler: function() {
-           
+       authenticationSuccessHandler: function($scope) {
+    	   //$scope.signIn = false;
+    	   //$scope.register = false;
            // Default route
            $timeout(function() {
                
@@ -214,7 +215,7 @@ angular.module( 'SpringBootAwsDemo.authen', ['ngCookies'] )
                 
             }).then(function (result) {
                 // Check result returned
-                if ('token' in result) {
+                if (200 === result.status_code) {
                     // Get user info
                     angular.extend(user.info, result);
                     // Set token

@@ -6,7 +6,7 @@
 
 'use strict';
 
-angular.module( 'SpringBootAwsDemo' )
+angular.module( 'CouponMaster' )
 
 // Utilities for our app
 .factory( 'util', [ '$http', '$q', 'server', '$log', '_', 'api'/*, '$uibModal'*//*, '$i18next'*/, function ( $http, $q, server, $log, _, api/*, $uibModal*//*, $i18next */) {

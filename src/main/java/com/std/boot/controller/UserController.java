@@ -156,8 +156,8 @@ public class UserController extends APIUtil{
 	    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	    public String login(/*HttpServletRequest request,*/
 	    		@RequestParam(value="email", required=true) String email,
-	            @RequestParam(value="password", required=true) String password,
-	            @RequestParam(value="keepMeLogin", required=true) Boolean keepMeLogin
+	            @RequestParam(value="password", required=true) String password/*,
+	            @RequestParam(value="keepMeLogin", required=true) Boolean keepMeLogin*/
 	    ) {
 	    	/*String email= request.getParameter("email");
 	    	String password= request.getParameter("password");
@@ -189,7 +189,8 @@ public class UserController extends APIUtil{
 	                        Date currentDate = new Date();
 	                        userToken.setLoginDate(DateUtil.convertToUTC(currentDate));
 
-	                        Date expirationDate = keepMeLogin ? new Date(currentDate.getTime() + Constant.DEFAULT_REMEMBER_LOGIN_MILISECONDS) : new Date(currentDate.getTime() + Constant.DEFAULT_SESSION_TIME_OUT);
+	                        boolean keepMeLogin=true;
+							Date expirationDate = keepMeLogin ? new Date(currentDate.getTime() + Constant.DEFAULT_REMEMBER_LOGIN_MILISECONDS) : new Date(currentDate.getTime() + Constant.DEFAULT_SESSION_TIME_OUT);
 	                        userToken.setExpirationDate(DateUtil.convertToUTC(expirationDate));
 
 	                        userTokenService.save(userToken);

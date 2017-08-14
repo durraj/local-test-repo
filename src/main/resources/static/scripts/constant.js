@@ -6,7 +6,7 @@
 
 'use strict';
 
-angular.module('SpringBootAwsDemo')
+angular.module('CouponMaster')
 
 .constant('AppConstant', {
     DEFAULT_MIN_PRICE_RANGE: 0,

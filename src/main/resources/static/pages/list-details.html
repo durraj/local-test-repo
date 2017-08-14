@@ -17,7 +17,7 @@
 					COUPON</a>
 			</div>
 		</div>
-		<div ng-controller="ViewAllDealsCtrl as viewAllDealsCtrl">
+		<!-- <div ng-controller="ViewAllDealsCtrl as viewAllDealsCtrl"> -->
 		<!-- <div class='hourglass' ng-show="dataLoading">
 		  <div class='top'></div>
 		  <div class='bottom'></div>
@@ -462,7 +462,7 @@
 				/.block - Special offer
 			</div> -->
 			<!-- /.col-left -->
-			<div class="col-sm-9 col-right">
+			<div class="col-sm-9 col-right" ng-repeat="dealList in deals.content">
 
 				<div class="page-title">
 					<h1>
@@ -483,7 +483,8 @@
 				<!-- /.toolbar -->
 
 				<ol id="products-list" class="products-list">
-					<li class="item" dir-paginate="deal in deals.content | filter:searchFilter | itemsPerPage: 100">
+					<!-- <li class="item" dir-paginate="deal in deals.content | filter:searchFilter | itemsPerPage: 100" pagination-id="dealPage"> -->
+					<li class="item"  ng-repeat="deal in deals.content" pagination-id="dealPage">
 						<div class="item-inner">
 							<div class="row">
 								<div class="col-sm-3 col-sms-3 col-smb-12">
@@ -492,7 +493,7 @@
 										<div class="product_icon"></div>
 										<a class="product-image"
 											title="{{ deal.deal_title }}"
-											href="hot-deals/deal-detail/{{ deal.deal_seoname }}"
+											ui-sref="dealDetails({dealId: deal.deal_seoname})"
 											rel="author"><img
 											alt="{{ deal.deal_title }}"
 											src="{{ deal.merchant_logo_url }}"
@@ -568,8 +569,28 @@
 						</div>
 
 					</li>
+					
 					<center>
-					<!-- <div class="pagination" paging
+					<!-- <ul class="pagination" page="1" page-size="totalPage">
+						<li ng-disabled="currentPage==0"><a href="" ng-click="loadPage(currentPage)">{{ currentPage }}</a></li>
+						<li ng-disabled="currentPage==1"><a href="" ng-click="loadPage(currentPage+1)">{{currentPage+1}}</a></li>
+					</ul> -->
+					<div class="pagination" paging
+                         page="1" 
+                         page-size="pageSize" 
+                         total="totalPage"
+                         show-prev-next="true"
+                         show-first-last="true"
+                         paging-action="loadPage(page)">
+                    </div>
+						<!-- <ul paging page-size="100" class="pagination" page="1" total="11" show-prev-next="true"
+						paging-action="loadPage(page)"> -->
+							<!-- <li><a class="selected">1</a></li>
+							<li><a href="#" paging-action="loadPage(2)">2</a></li>
+							<li><a href="#" paging-action="loadPage(3)">3</a></li>
+							<li><a href="#" paging-action="loadPage(4)">4</a></li> -->
+						</ul>
+						<!-- <div paging
                          page="1" 
                          page-size="pageSize" 
                          total="totalPage"
@@ -577,21 +598,20 @@
                          show-first-last="true"
                          paging-action="loadPage(page)">
                     </div> -->
-						<ul class="pagination">
-							<li><a class="selected">1</a></li>
-							<li><a href="/hot-deals/2">2</a></li>
-							<li><a href="/hot-deals/3">3</a></li>
-							<li><a href="/hot-deals/4">&gt;</a></li>
-						</ul>
+						<!-- <ul class="pagination" paging total="totalPage" page="currentPage" ng-change="loadPage(page)" page-size="pageSize" ng-model="page"> -->
+<!-- 						<dir-pagination-controls pagination-id="dealPage" page="currentPage" ng-change="loadPage(pageNumber)" page-size="pageSize"></dir-pagination-controls> -->
+						<!--  <li ng-repeat="pageNumber in pages track by tracker(currentPage, $index)" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
+					        <a href="" ng-click="loadPage(pageNumber)">{{ pageNumber }}</a>
+					    </li> -->
+					</ul>
 					</center>
 				</ol>
-
 
 
 			</div>
 			<!-- /.col-right -->
 		</div>
-		</div><!-- ng controller -->
+		<!-- </div> --><!-- ng controller -->
 
 
 

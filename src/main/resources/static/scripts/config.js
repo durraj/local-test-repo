@@ -6,12 +6,12 @@
 
 'use strict';
 
-angular.module( 'SpringBootAwsDemo' )
+angular.module( 'CouponMaster' )
 
 .constant( 'server',  {
 
     // Local
-    URL: 'http://localhost:8080/spring-boot-aws/'
+    URL: 'http://localhost:8080/api'
     // Server
     //URL: 'http://52.196.33.166/marketplace-rest-api'
 })

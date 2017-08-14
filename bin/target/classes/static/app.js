@@ -1,7 +1,7 @@
 (function () {
-    var springBootAws = angular.module('SpringBootAwsDemo', ['ngRoute', 'angularUtils.directives.dirPagination']);
+    var couponMaster = angular.module('CouponMaster', ['ngRoute', 'angularUtils.directives.dirPagination']);
 
-    springBootAws.directive('active', function ($location) {
+    couponMaster.directive('active', function ($location) {
         return {
             link: function (scope, element) {
                 function makeActiveIfMatchesCurrentPath() {
@@ -19,7 +19,7 @@
         };
     });
     
-    springBootAws.directive('fileModel', [ '$parse', function($parse) {
+    couponMaster.directive('fileModel', [ '$parse', function($parse) {
     	return {
     		restrict : 'A',
     		link : function(scope, element, attrs) {
@@ -35,7 +35,7 @@
     	};
     } ]);
     
-    springBootAws.controller('CreateCustomerCtrl', function ($scope, $location, $http) {
+    couponMaster.controller('CreateCustomerCtrl', function ($scope, $location, $http) {
         var self = this;
         
         self.add = function () {            
@@ -67,7 +67,7 @@
         };
     });
     
-    springBootAws.controller('ViewCustomerCtrl', function ($scope, $http, $routeParams) {
+    couponMaster.controller('ViewCustomerCtrl', function ($scope, $http, $routeParams) {
         
     	var customerId = $routeParams.customerId;    	        
     	$scope.currentPage = 1;
@@ -83,7 +83,7 @@
         });
     });
     
-    springBootAws.controller('ViewAllCustomersCtrl', function ($scope, $http) {
+    couponMaster.controller('ViewAllCustomersCtrl', function ($scope, $http) {
     	
     	var self = this;
     	$scope.customers = []; 
@@ -115,13 +115,13 @@
         };
     });
     
-    springBootAws.filter('formatDate', function() {
+    couponMaster.filter('formatDate', function() {
     	return function(input) {
     		return moment(input).format("DD-MM-YYYY");
     	};
     });
     
-    springBootAws.config(function ($routeProvider) {
+    couponMaster.config(function ($routeProvider) {
         $routeProvider.when('/home', {templateUrl: 'pages/home.tpl.html'});
         $routeProvider.when('/create-customer', {templateUrl: 'pages/createCustomer.tpl.html'});
         $routeProvider.when('/view-customer/:customerId', {templateUrl: 'pages/viewCustomer.tpl.html'});

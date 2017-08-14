@@ -1,5 +1,5 @@
 (function () {
-    var springBootAws = angular.module('SpringBootAwsDemo', ['ngRoute', 'angularUtils.directives.dirPagination']);
+    var springBootAws = angular.module('CouponMaster', ['ngRoute', 'angularUtils.directives.dirPagination']);
 
     springBootAws.directive('active', function ($location) {
         return {

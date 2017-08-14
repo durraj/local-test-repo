@@ -1,16 +1,19 @@
 (function () {
-    var springBootAws = angular.module('SpringBootAwsDemo', 
+    var couponMaster = angular.module('CouponMaster', 
     			[
-    				//'ui.bootstrap',
+    				'ui.bootstrap',
     				'ngRoute',
+    				'ui.router',
     			'ngCookies',
-    			'SpringBootAwsDemo.directive',
-    			'SpringBootAwsDemo.login',
+    			'CouponMaster.directive',
+    			'CouponMaster.login',
+    			'CouponMaster.home',
+    			'CouponMaster.deal.details',
     			//'ui.router',
     			/*'jm.i18next',*/
-    			'SpringBootAwsDemo.authen','angularUtils.directives.dirPagination']);
+    			'CouponMaster.authen','angularUtils.directives.dirPagination']);
 
-    springBootAws.directive('active', function ($location) {
+    couponMaster.directive('active', function ($location) {
         return {
             link: function (scope, element) {
                 function makeActiveIfMatchesCurrentPath() {
@@ -28,7 +31,7 @@
         };
     });
     
-    springBootAws.directive('fileModel', [ '$parse', function($parse) {
+    couponMaster.directive('fileModel', [ '$parse', function($parse) {
     	return {
     		restrict : 'A',
     		link : function(scope, element, attrs) {
@@ -44,7 +47,7 @@
     	};
     } ]);
     
-    springBootAws.controller('CreateCustomerCtrl', function ($scope, $location, $http) {
+    couponMaster.controller('CreateCustomerCtrl', function ($scope, $location, $http) {
         var self = this;
         
         self.add = function () {            
@@ -62,7 +65,7 @@
         	formData.append('postcode', customerModel.address.postcode);
         		
         	$scope.saving=true;
-        	$http.post('/spring-boot-aws/customers', formData, {	
+        	$http.post('/customers', formData, {	
         	    transformRequest : angular.identity,
     			headers : {
     				'Content-Type' : undefined
@@ -79,7 +82,7 @@
         };
     });
     
-    springBootAws.controller('RegisterCtrl', function ($scope, $location, $http) {
+    couponMaster.controller('RegisterCtrl', function ($scope, $location, $http) {
         var self = this;
         
         self.register = function () {            
@@ -109,7 +112,7 @@
         		
         	$scope.saving=true;
         	
-        	$http.post('/spring-boot-aws/registration', formData, {	
+        	$http.post('/registration', formData, {	
         	    transformRequest : angular.identity,
     			headers : {
     				'Content-Type' : undefined
@@ -123,10 +126,10 @@
         };
     });
     
-   /* springBootAws.controller('LoginCtrl', function ($scope, $location, $http) {
+   /* couponMaster.controller('LoginCtrl', function ($scope, $location, $http) {
         var self = this;
         $scope.dataLoading=false
-        $http.get('/spring-boot-aws/login/').then(function onSuccess(response) {
+        $http.get('/login/').then(function onSuccess(response) {
         	if(response.values.loggedIn)
         		{
         			$scope.dataLoading=true;
@@ -151,7 +154,7 @@
         	formData.append('keepMeLogin', loginModel.keepMeLogin);
         		
         	$scope.saving=true;
-        	$http.post('/spring-boot-aws/login', formData, {	
+        	$http.post('/login', formData, {	
         	    transformRequest : angular.identity,
     			headers : {
     				'Content-Type' : undefined
@@ -168,14 +171,14 @@
         };
     });*/
     
-    springBootAws.controller('ViewCustomerCtrl', function ($scope, $http, $routeParams) {
+    couponMaster.controller('ViewCustomerCtrl', function ($scope, $http, $routeParams) {
         
     	var customerId = $routeParams.customerId;    	        
     	$scope.currentPage = 1;
     	$scope.pageSize = 10;
     	
     	$scope.dataLoading = true;
-        $http.get('/spring-boot-aws/customers/' + customerId).then(function onSuccess(response) {
+        $http.get('/customers/' + customerId).then(function onSuccess(response) {
         	$scope.customer = response.data;
         	$scope.dataLoading = false;
         }, function onError(response) {
@@ -184,14 +187,31 @@
         });
     });
     
-    springBootAws.controller('ViewAllCustomersCtrl', function ($scope, $http) {
+couponMaster.controller('ViewDealCtrl', function ($scope, $http, $routeParams,$stateParams) {
+        
+    	//var dealId = $routeParams.dealId;  
+	var dealId = $stateParams.dealId;
+    	$scope.currentPage = 1;
+    	$scope.pageSize = 10;
+    	
+    	$scope.dataLoading = true;
+        $http.get('/dealDetail/' + dealId).then(function onSuccess(response) {
+        	$scope.deal = response.data.result;
+        	$scope.dataLoading = false;
+        }, function onError(response) {
+        	$scope.customer = response.statusText;
+        	$scope.dataLoading = false;
+        });
+    });
+    
+    couponMaster.controller('ViewAllCustomersCtrl', function ($scope, $http) {
     	
     	var self = this;
     	$scope.customers = []; 
     	$scope.searchText;
         
         $scope.dataLoading = true;
-        $http.get('/spring-boot-aws/customers').then(function mySucces(response) {
+        $http.get('/customers').then(function mySucces(response) {
         	$scope.customers = response.data;
         	$scope.dataLoading = false;
         }, function myError(response) {
@@ -202,7 +222,7 @@
         self.delete = function (customerId) {
         	$scope.selectedCustomer = customerId;
         	$scope.customerDelete = true;
-        	$http.delete('/spring-boot-aws/customers/' + customerId).then(function onSucces(response) {
+        	$http.delete('/customers/' + customerId).then(function onSucces(response) {
             	$scope.customers = _.without($scope.customers, _.findWhere($scope.customers, {id: customerId}));
             	$scope.customerDelete = false;
             }, function onError(){
@@ -215,13 +235,40 @@
             return !$scope.searchText || re.test(obj.firstName) || re.test(obj.lastName.toString());
         };
     });
+    couponMaster.filter('startFrom', function() {
+        return function(input, start) {
+            start = +start; //parse to int
+            return input.slice(start);
+        }
+    });
+couponMaster.controller('ViewAllDealsCtrl', function ($scope, $http,$routeParams) {
+    	
+    	var self = this;
+    	$scope.customers = []; 
+    	$scope.searchText;
+    	var pageId = $routeParams.pageId;  
+        $scope.dataLoading = true;
+        $http.get('/allDeals/'+ pageId).then(function mySucces(response) {
+        	$scope.deals = response.data;
+        	$scope.dataLoading = false;
+        }, function myError(response) {
+        	$scope.deals = response.statusText;
+        	$scope.dataLoading = false;
+        });        
+        
+        
+        $scope.searchFilter = function (obj) {
+            var re = new RegExp($scope.searchText, 'i');
+            return !$scope.searchText || re.test(obj.firstName) || re.test(obj.lastName.toString());
+        };
+    });
     
-    springBootAws.filter('formatDate', function() {
+    couponMaster.filter('formatDate', function() {
     	return function(input) {
     		return moment(input).format("DD-MM-YYYY");
     	};
     });
-    springBootAws.config(['$httpProvider', function( $httpProvider ) {
+    couponMaster.config(['$httpProvider', function( $httpProvider ) {
 
         $httpProvider.interceptors.push( function ( $q, $injector, $location, $timeout ) {
                 
@@ -344,16 +391,51 @@
 
     }])
     
-    springBootAws.config(function ($routeProvider) {
+    /*couponMaster.config(function ($routeProvider,$locationProvider) {
         //$routeProvider.when('/home', {templateUrl: 'pages/home.tpl.html'});
     	$routeProvider.when('/home', {templateUrl: 'pages/list-details.tpl.html'});
         $routeProvider.when('/create-customer', {templateUrl: 'pages/createCustomer.tpl.html'});
         $routeProvider.when('/view-customer/:customerId', {templateUrl: 'pages/viewCustomer.tpl.html'});
         $routeProvider.when('/view-all-customers', {templateUrl: 'pages/viewAllCustomers.tpl.html'});
         $routeProvider.when('/register', {templateUrl: 'pages/register.tpl.html'});
+        $routeProvider.when('/hot-deals/:pageId', {templateUrl: 'pages/list-details.tpl.html'});
+        $routeProvider.when('/hot-deals/deal-detail/:dealId', {templateUrl: 'pages/viewDealDetail.tpl.html'});
         $routeProvider.when('/sign-in', {templateUrl: 'pages/sign-in.tpl.html'});
         $routeProvider.otherwise({redirectTo: '/home'});
-    });
+        $locationProvider.html5Mode(true);
+    });*/
+    couponMaster.config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider,$locationProvider) {
+        $urlRouterProvider.otherwise("/index");
+        // For authentication, but for now just Mock demo.
+        // Will be implement in near function
+        $stateProvider
+                .state('master', {
+                    templateUrl: 'pages/master_tmpl.html',
+                    abstract: true
+                })
+                .state('index', {
+                    url: '/index',
+                    	parent: 'master',
+                    	templateUrl: 'pages/list-details.html',
+                    	controller: 'HomeCtrl'
+                    //controller: 'ViewAllDealsCtrl'
+                })
+                 .state('allDeals', {
+                    url: '/hot-deals',
+                    	parent: 'master',
+                    	templateUrl: 'pages/list-details.html',
+                    	controller: 'HomeCtrl'
+                    //controller: 'ViewAllDealsCtrl'
+                })
+                .state('dealDetails', {
+                    url: '/hot-deals/deal-detail/{dealId}',
+                    	parent: 'master',
+                    	templateUrl: 'pages/viewDealDetail.html',
+                    	controller: 'DealDetailsCtrl'
+                    //controller: 'ViewAllDealsCtrl'
+                });
+        $locationProvider.html5Mode(true);
+    }])
     
 }());
 /*angular.module('jm.i18next').config(['$i18nextProvider', function ( $i18nextProvider ) {

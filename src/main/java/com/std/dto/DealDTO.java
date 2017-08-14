@@ -59,6 +59,11 @@ public class DealDTO {
 	private String DealTitle;
 	@Setter
 	@Getter
+	@Basic(optional = false)
+    @Column(name = "deal_seo_title")
+	private String DealSEOName;
+	@Setter
+	@Getter
 	@JsonProperty
 	@Basic(optional = false)
     @Column(name = "deal_description")
@@ -255,8 +260,10 @@ public class DealDTO {
 	public void setTotalRecords(int totalRecords) {
 		TotalRecords = totalRecords;
 	}
-	
-	
-
-
+	public String getDealSEOName() {
+		return DealSEOName;
+	}
+	public void setDealSEOName(String dealSEOName) {
+		DealSEOName = dealSEOName;
+	}
 }

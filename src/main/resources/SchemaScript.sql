@@ -62,18 +62,19 @@ CREATE TABLE `app_user_role` (
   CONSTRAINT `fk_user_role_userid` FOREIGN KEY (`user_id`) REFERENCES `app_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS deal_detail (
+ CREATE TABLE IF NOT EXISTS deal_detail (
   id varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   deal_id int(11) NOT NULL,
   deal_title VARCHAR(255) NOT NULL,
-  deal_description VARCHAR(255) NOT NULL,
+  deal_seo_title VARCHAR(255) NOT NULL,
+  deal_description longtext NOT NULL,
   deal_type VARCHAR(255) NOT NULL,
   coupon_code VARCHAR(255) DEFAULT NULL,
   deep_link VARCHAR(255) NOT NULL,
   feature_deal int(11) default 0,
   exclusive_deal int(11) default 0,
   merchant_id int(11) default NULL,
-  merchant_name int(11) default NULL,
+  merchant_name longtext default NULL,
   image_url VARCHAR(255) NOT NULL,
   network_id int(11) default NULL,
   network_name VARCHAR(255) NOT NULL,
@@ -81,7 +82,7 @@ CREATE TABLE IF NOT EXISTS deal_detail (
   category_name VARCHAR(255) default NULL,
   start_date datetime DEFAULT NULL,
   end_date datetime DEFAULT NULL,
-  PRIMARY KEY (id));
+  PRIMARY KEY (id))ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
   DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (

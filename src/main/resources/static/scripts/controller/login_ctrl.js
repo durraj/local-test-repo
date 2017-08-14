@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('SpringBootAwsDemo.login', [])
+angular.module('CouponMaster.login', [])
 
 .controller('LoginCtrl', ['$scope', 'user', function ($scope, user) {
     // Alert array
