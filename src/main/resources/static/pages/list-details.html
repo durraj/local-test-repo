@@ -462,7 +462,7 @@
 				/.block - Special offer
 			</div> -->
 			<!-- /.col-left -->
-			<div class="col-sm-9 col-right" ng-repeat="dealList in deals.content">
+			<div class="col-sm-9 col-right">
 
 				<div class="page-title">
 					<h1>
@@ -483,8 +483,8 @@
 				<!-- /.toolbar -->
 
 				<ol id="products-list" class="products-list">
-					<!-- <li class="item" dir-paginate="deal in deals.content | filter:searchFilter | itemsPerPage: 100" pagination-id="dealPage"> -->
-					<li class="item"  ng-repeat="deal in deals.content" pagination-id="dealPage">
+					<li class="item" dir-paginate="deal in deals.content | filter:searchFilter | itemsPerPage: pageSize" total-items="totalDeals" current-page="pagination.current">
+					<!-- <li class="item"  ng-repeat="deal in deals.content"> -->
 						<div class="item-inner">
 							<div class="row">
 								<div class="col-sm-3 col-sms-3 col-smb-12">
@@ -571,39 +571,10 @@
 					</li>
 					
 					<center>
-					<!-- <ul class="pagination" page="1" page-size="totalPage">
-						<li ng-disabled="currentPage==0"><a href="" ng-click="loadPage(currentPage)">{{ currentPage }}</a></li>
-						<li ng-disabled="currentPage==1"><a href="" ng-click="loadPage(currentPage+1)">{{currentPage+1}}</a></li>
-					</ul> -->
-					<div class="pagination" paging
-                         page="1" 
-                         page-size="pageSize" 
-                         total="totalPage"
-                         show-prev-next="true"
-                         show-first-last="true"
-                         paging-action="loadPage(page)">
-                    </div>
-						<!-- <ul paging page-size="100" class="pagination" page="1" total="11" show-prev-next="true"
-						paging-action="loadPage(page)"> -->
-							<!-- <li><a class="selected">1</a></li>
-							<li><a href="#" paging-action="loadPage(2)">2</a></li>
-							<li><a href="#" paging-action="loadPage(3)">3</a></li>
-							<li><a href="#" paging-action="loadPage(4)">4</a></li> -->
-						</ul>
-						<!-- <div paging
-                         page="1" 
-                         page-size="pageSize" 
-                         total="totalPage"
-                         show-prev-next="true"
-                         show-first-last="true"
-                         paging-action="loadPage(page)">
-                    </div> -->
-						<!-- <ul class="pagination" paging total="totalPage" page="currentPage" ng-change="loadPage(page)" page-size="pageSize" ng-model="page"> -->
-<!-- 						<dir-pagination-controls pagination-id="dealPage" page="currentPage" ng-change="loadPage(pageNumber)" page-size="pageSize"></dir-pagination-controls> -->
-						<!--  <li ng-repeat="pageNumber in pages track by tracker(currentPage, $index)" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
-					        <a href="" ng-click="loadPage(pageNumber)">{{ pageNumber }}</a>
-					    </li> -->
-					</ul>
+						<dir-pagination-controls boundary-links="true" on-page-change="loadPage(newPageNumber)"></dir-pagination-controls>
+						<!-- <paging page="currentPage" page-size="pageSize" total="total" show-prev-next="true" show-first-last="true" paging-action="loadPage(page)">
+						</paging>  -->
+						<!-- <ul uib-pagination direction-links="true" boundary-links="true" total-items="totalDeals" ng-model="currentPage" ng-change="loadPage(currentPage)"></ul>  -->
 					</center>
 				</ol>
 
