@@ -159,6 +159,17 @@ public class DealsController extends APIUtil{
 	public String dealDetails(@PathVariable("dealId") String dealId) {
 		DealDTO deal = dealService.findDealBySeoName(dealId);
 		statusResponse = new StatusResponse(APIStatus.OK.getCode(), deal);
+		//super.createCookie("deals-browsed", dealId);
+		return writeObjectToJson(statusResponse);
+		
+	}
+	@RequestMapping(value = "/relatedDeals/{dealId}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+	public String relatedDeal(@PathVariable("dealId") String dealId) {
+		DealDTO deal = dealService.findDealBySeoName(dealId);
+		int dealCatId = deal.getDealCategoryID();
+		List<DealDTO> relatedDeals = dealService.FindDealsByCategoryId(dealCatId);
+		statusResponse = new StatusResponse(APIStatus.OK.getCode(), relatedDeals);
+		//super.createCookie("deals-browsed", dealId);
 		return writeObjectToJson(statusResponse);
 		
 	}

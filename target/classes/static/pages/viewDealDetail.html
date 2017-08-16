@@ -1,0 +1,892 @@
+<!-- <div ng-controller="ViewDealCtrl as viewDeal"> -->
+<div class="main">
+<div class="container">
+<div class="row"
+	style="margin-bottom: 16px; border-bottom: 1px solid #cccccc; padding: 15px;">
+	<div class="col-sm-9 col-right">
+		<div class="product-view">
+			<div class="row">
+				<div class="col-sm-3 col-sms-3 col-smb-12" style="border: 1px solid #cccccc; border-radius: 11px; padding: 30px;">
+					<div class="images-container" >
+						<a href="" title="Primis in faucibus" class="product-image"> 
+							<img src="{{ deal.merchant_logo_url}}" alt="{{ deal.deal_title }}"/>
+						</a>
+					</div>
+				</div>
+				<div class="product-shop col-sm-7">
+					<div class="product-name">
+						<h1>{{ deal.deal_title }}</h1>
+					</div>
+
+					<div class="box-container2">
+						<div class="price-box">
+							<p class="special-price">
+								<span class="price-label">Special Price</span> <span
+									id="product-price-1" class="price">â‚¹ 99.00</span>
+							</p>
+							<p class="old-price">
+								<span class="price-label">Regular Price:</span> <span
+									id="old-price-1" class="price">â‚¹ 199.00</span>
+							</p>
+							<a
+								href="https://plus.google.com/share?url=https://www.suckthatdeal.com/product/Save-50-off-on-The-Boy-Who-Loved-Amazon"
+								target="_blank"><i class="fa fa-google-plus-square fa-2x"
+								aria-hidden="true"></i></a>&nbsp; <a
+								href="https://twitter.com/home?status=https://www.suckthatdeal.com/product/Save-50-off-on-The-Boy-Who-Loved-Amazon"
+								target="_blank"><i class="fa fa-twitter fa-2x"
+								aria-hidden="true"></i></a>&nbsp;
+						</div>
+
+					</div>
+					<div class="short-description">
+						<div class="std">
+							<p>
+								{{ deal.deal_description }}
+							</p>
+						</div>
+					</div>
+
+					<p class="availability in-stock">
+						Availability: <span>Active</span>
+					</p>
+
+
+
+					<a href="{{deal.deep_link_url}}" target="_blank"
+						class="btn btn-danger btn-cart dtlbtn"
+						style="margin-bottom: 50px;">Suck This Deal</a>
+
+				</div>
+				<!-- /.product-shop -->
+			</div>
+			<!-- /.product-tab -->
+		</div>
+		<!-- /.product-view -->
+
+		<div class="featuredproductslider-container">
+			<div class="title-group1">
+				<h2>Upsell products</h2>
+			</div>
+			<div id="featured-products" class="owl-container">
+				<div class="owl owl-carousel owl-theme"
+					style="opacity: 1; display: block;">
+					<div class="owl-wrapper-outer">
+						<div class="owl-wrapper"
+							style="width: 11414px; left: 0px; display: block;">
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Harry-Potter-and-the-Philosophers-Stone-for-200-Flipkart"
+												title="Harry Potter and the Philosopher's Stone for â‚¹200 @Flipkart"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/harry_potter_and_the_sl7148171509279.jpg"
+												style=""
+												alt="Harry Potter and the Philosopher's Stone for â‚¹200 @Flipkart">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Harry-Potter-and-the-Philosophers-Stone-for-200-Flipkart"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Harry-Potter-and-the-Philosophers-Stone-for-200-Flipkart"
+													title="Harry Potter and the Philosopher's Stone for â‚¹200 @Flipkart">Harry
+													Potter and the Philosopher's Stone for â‚¹200 @Flipkart</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 200.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 399.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-50-off-on-Every-Time-it-Rains-Amazon"
+												title="Save 50% off on Every Time it Rains @ Amazon"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/every_time_it_rains__compressed149135214959.jpg"
+												style="" alt="Save 50% off on Every Time it Rains @ Amazon">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-50-off-on-Every-Time-it-Rains-Amazon"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-50-off-on-Every-Time-it-Rains-Amazon"
+													title="Save 50% off on Every Time it Rains @ Amazon">Save
+													50% off on Every Time it Rains @ Amazon</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 100.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 199.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-61-off-on-General-Knowledge-Paperback-Amazon"
+												title="Save 61% off on General Knowledge Paperback @ Amazon"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/gkbookcompressed149299229835.jpg"
+												style=""
+												alt="Save 61% off on General Knowledge Paperback @ Amazon">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-61-off-on-General-Knowledge-Paperback-Amazon"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-61-off-on-General-Knowledge-Paperback-Amazon"
+													title="Save 61% off on General Knowledge Paperback @ Amazon">Save
+													61% off on General Knowledge Paperback @ Amazon</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 70.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 180.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-50-off-on-Objective-General-English-Amazon"
+												title="Save 50 % off on Objective General English @ Amazon"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/englishbookcompressed149299279285.jpg"
+												style=""
+												alt="Save 50 % off on Objective General English @ Amazon">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-50-off-on-Objective-General-English-Amazon"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-50-off-on-Objective-General-English-Amazon"
+													title="Save 50 % off on Objective General English @ Amazon">Save
+													50 % off on Objective General English @ Amazon</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 142.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 285.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-49-off-on-The-Rise-of-Sivagami-Bahubali-Before-The-Beginning-Flipkart"
+												title="Save 49% off on The Rise of Sivagami : Bahubali : Before The Beginning @ Flipkart"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/ubalibyaanandneelakantan149565628290.jpg"
+												style=""
+												alt="Save 49% off on The Rise of Sivagami : Bahubali : Before The Beginning @ Flipkart">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-49-off-on-The-Rise-of-Sivagami-Bahubali-Before-The-Beginning-Flipkart"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-49-off-on-The-Rise-of-Sivagami-Bahubali-Before-The-Beginning-Flipkart"
+													title="Save 49% off on The Rise of Sivagami : Bahubali : Before The Beginning @ Flipkart">Save
+													49% off on The Rise of Sivagami : Bahubali : Before The
+													Beginning @ Flipkart</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 150.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 299.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-6-off-on-Bahubali---Battle-of-the-Bold-Flipkart"
+												title="Save 6% off on Bahubali - Battle of the Bold @ Flipkart"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/baahubalibookcompressed149565693759.jpg"
+												style=""
+												alt="Save 6% off on Bahubali - Battle of the Bold @ Flipkart">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-6-off-on-Bahubali---Battle-of-the-Bold-Flipkart"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-6-off-on-Bahubali---Battle-of-the-Bold-Flipkart"
+													title="Save 6% off on Bahubali - Battle of the Bold @ Flipkart">Save
+													6% off on Bahubali - Battle of the Bold @ Flipkart</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 163.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 175.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-38-off-on-Steve-Jobs-by-Walter-Isaacson-Flipkart"
+												title="Save 38% off on Steve Jobs by Walter Isaacson @ Flipkart"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/stevejobsbookcompressed149565762110.jpg"
+												style=""
+												alt="Save 38% off on Steve Jobs by Walter Isaacson @ Flipkart">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-38-off-on-Steve-Jobs-by-Walter-Isaacson-Flipkart"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-38-off-on-Steve-Jobs-by-Walter-Isaacson-Flipkart"
+													title="Save 38% off on Steve Jobs by Walter Isaacson @ Flipkart">Save
+													38% off on Steve Jobs by Walter Isaacson @ Flipkart</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 340.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 550.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-45-or-more-on-IBPS-PO-Books-Amazon"
+												title="Save 45% or more on IBPS PO Books @Amazon"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/ebpnet-compress-image1149628530188.jpg"
+												style="" alt="Save 45% or more on IBPS PO Books @Amazon">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-45-or-more-on-IBPS-PO-Books-Amazon"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-45-or-more-on-IBPS-PO-Books-Amazon"
+													title="Save 45% or more on IBPS PO Books @Amazon">Save
+													45% or more on IBPS PO Books @Amazon</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 356.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 650.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-31-off-on-Half-Giirlfriend-Infibeam"
+												title="Save 31% off on Half Giirlfriend @ Infibeam"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/alfirlfriendaperbackcompressed149720947390.jpg"
+												style="" alt="Save 31% off on Half Giirlfriend @ Infibeam">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-31-off-on-Half-Giirlfriend-Infibeam"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-31-off-on-Half-Giirlfriend-Infibeam"
+													title="Save 31% off on Half Giirlfriend @ Infibeam">Save
+													31% off on Half Giirlfriend @ Infibeam</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 123.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 176.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-31-off-on-Indiahardcover-Infibeam"
+												title="Save 31% off on India(hardcover) @ Infibeam"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/ndiaoookimalalancompressed149720996381.jpg"
+												style="" alt="Save 31% off on India(hardcover) @ Infibeam">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-31-off-on-Indiahardcover-Infibeam"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-31-off-on-Indiahardcover-Infibeam"
+													title="Save 31% off on India(hardcover) @ Infibeam">Save
+													31% off on India(hardcover) @ Infibeam</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 349.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 499.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-31-off-on-Little-Black-Book-for-Stunning-Success-Tools-for-Action-Mastery-Infibeam"
+												title="Save 31% off on Little Black Book for Stunning Success+ Tools for Action Mastery  @ Infibeam"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/asteryaperbackcompressed149721057013.jpg"
+												style=""
+												alt="Save 31% off on Little Black Book for Stunning Success+ Tools for Action Mastery  @ Infibeam">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-31-off-on-Little-Black-Book-for-Stunning-Success-Tools-for-Action-Mastery-Infibeam"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-31-off-on-Little-Black-Book-for-Stunning-Success-Tools-for-Action-Mastery-Infibeam"
+													title="Save 31% off on Little Black Book for Stunning Success+ Tools for Action Mastery  @ Infibeam">Save
+													31% off on Little Black Book for Stunning Success+ Tools
+													for Action Mastery @ Infibeam</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 175.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 250.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-28-off-on-A-Darkness-More-Than-Night-Mass-Market-Paperbound-Infibeam"
+												title="Save 28% off on A Darkness More Than Night (Mass Market Paperbound) @ Infibeam"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/arketaperboundcompressed149721127716.jpg"
+												style=""
+												alt="Save 28% off on A Darkness More Than Night (Mass Market Paperbound) @ Infibeam">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-28-off-on-A-Darkness-More-Than-Night-Mass-Market-Paperbound-Infibeam"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-28-off-on-A-Darkness-More-Than-Night-Mass-Market-Paperbound-Infibeam"
+													title="Save 28% off on A Darkness More Than Night (Mass Market Paperbound) @ Infibeam">Save
+													28% off on A Darkness More Than Night (Mass Market
+													Paperbound) @ Infibeam</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 486.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 666.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-item" style="width: 439px;">
+								<div class="productslider-item item">
+									<div class="item-inner" style="width: 200px !important;">
+										<div class="images-container">
+											<div class="product_icon"></div>
+											<a
+												href="https://www.suckthatdeal.com/product/Save-50-off-on-The-Boy-Who-Loved-Amazon"
+												title="Save 50% off on The Boy Who Loved @ Amazon"
+												class="product-image"> <img
+												src="https://www.suckthatdeal.com/assets/uploads/product/heoyhoovedcompressed150036551896.jpg"
+												style="" alt="Save 50% off on The Boy Who Loved @ Amazon">
+											</a>
+											<div class="box-hover">
+												<ul class="add-to-links">
+													<li><a
+														href="https://www.suckthatdeal.com/product/Save-50-off-on-The-Boy-Who-Loved-Amazon"
+														class="link-quickview">Quick View</a></li>
+
+												</ul>
+											</div>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a
+													href="https://www.suckthatdeal.com/product/Save-50-off-on-The-Boy-Who-Loved-Amazon"
+													title="Save 50% off on The Boy Who Loved @ Amazon">Save
+													50% off on The Boy Who Loved @ Amazon</a>
+											</h2>
+											<div class="price-box">
+												<p class="special-price">
+													<span class="price-label">Special Price</span> <span
+														class="price">â‚¹ 99.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price-label">Regular Price: </span> <span
+														class="price">â‚¹ 199.00</span>
+												</p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="owl-controls clickable">
+						<div class="owl-buttons">
+							<div class="owl-prev">prev</div>
+							<div class="owl-next">next</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.featuredproductslider-container -->
+	</div>
+	<!-- /.col-right -->
+	<div class="col-sm-3 col-left">
+		<div class="block">
+			<div class="title-group">
+				<h2>Related</h2>
+			</div>
+			<div id="special-offer" class="owl-container" >
+				<div class="owl">
+								<div class="sepecialoffer-item item">
+									<!-- <div class="item-inner first" ng-repeat="relatedDeal in relatedDeals.result"> -->
+									<div class="item-inner first" dir-paginate="relatedDeal in relatedDeals.result| itemsPerPage: 5">
+										<div class="images-container">
+											<a
+												href=""
+												title="{{relatedDeal.deal_title}}" class="product-image"> 
+												<img
+												src="{{relatedDeal.merchant_logo_url}}"
+												alt="{{relatedDeal.deal_title}}">
+											</a>
+										</div>
+										<div class="des-container">
+											<h2 class="product-name">
+												<a href=""
+													ui-sref="dealDetails({dealId: relatedDeal.deal_seoname})"
+													title="{{relatedDeal.deal_title}}">{{relatedDeal.deal_title}}</a>
+											</h2>
+											<!-- <div class="price-box">
+												<p class="special-price">
+													<span class="price">â‚¹ 200.00</span>
+												</p>
+												<p class="old-price">
+													<span class="price">â‚¹ 399.00</span>
+												</p>
+											</div> -->
+
+										</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+					<!-- <div class="owl-controls clickable">
+						<div class="owl-buttons">
+							<div class="owl-prev">prev</div>
+							<div class="owl-next">next</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+			<!-- /.owl-container -->
+		</div>
+		<!-- /.block - Special offer -->
+
+		<!-- /.banner-left -->
+	</div>
+	<!-- /.col-left -->
+</div>
+<!-- test change -->
+<style>
+.carousel-inner.vertical {
+	height: 100%;
+	/*Note: set specific height here if not, there will be some issues with IE browser*/
+}
+
+.carousel-inner.vertical>.item {
+	-webkit-transition: .6s ease-in-out top;
+	-o-transition: .6s ease-in-out top;
+	transition: .6s ease-in-out top;
+}
+
+@media all and (transform-3d) , ( -webkit-transform-3d ) {
+	.carousel-inner.vertical>.item {
+		-webkit-transition: -webkit-transform .6s ease-in-out;
+		-o-transition: -o-transform .6s ease-in-out;
+		transition: transform .6s ease-in-out;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-webkit-perspective: 1000;
+		perspective: 1000;
+	}
+	.carousel-inner.vertical>.item.next, .carousel-inner.vertical>.item.active.right
+		{
+		-webkit-transform: translate3d(0, 33.33%, 0);
+		transform: translate3d(0, 33.33%, 0);
+		top: 0;
+	}
+	.carousel-inner.vertical>.item.prev, .carousel-inner.vertical>.item.active.left
+		{
+		-webkit-transform: translate3d(0, -33.33%, 0);
+		transform: translate3d(0, -33.33%, 0);
+		top: 0;
+	}
+	.carousel-inner.vertical>.item.next.left, .carousel-inner.vertical>.item.prev.right,
+		.carousel-inner.vertical>.item.active {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		top: 0;
+	}
+}
+
+.carousel-inner.vertical>.active {
+	top: 0;
+}
+
+.carousel-inner.vertical>.next, .carousel-inner.vertical>.prev {
+	top: 0;
+	height: 100%;
+	width: auto;
+}
+
+.carousel-inner.vertical>.next {
+	left: 0;
+	top: 33.33%;
+	right: 0;
+}
+
+.carousel-inner.vertical>.prev {
+	left: 0;
+	top: -33.33%;
+	right: 0;
+}
+
+.carousel-inner.vertical>.next.left, .carousel-inner.vertical>.prev.right
+	{
+	top: 0;
+}
+
+.carousel-inner.vertical>.active.left {
+	left: 0;
+	top: -33.33%;
+	right: 0;
+}
+
+.carousel-inner.vertical>.active.right {
+	left: 0;
+	top: 33.33%;
+	right: 0;
+}
+
+#carousel-pager .carousel-control.left {
+	bottom: initial;
+	width: 100%;
+}
+
+#carousel-pager .carousel-control.right {
+	top: initial;
+	width: 100%;
+}
+</style>
+<div class="container">
+	<div class="row">
+
+
+		<div class="col-md-3">
+			<div id="carousel-pager" class="carousel slide " data-ride="carousel"
+				data-interval="500000000">
+				<!-- Carousel items -->
+				<div class="carousel-inner vertical">
+					<div class="active item">
+						<img
+							src="http://placehold.it/600/f44336/000000&amp;text=First+Slide"
+							class="img-responsive" data-target="#carousel-main"
+							data-slide-to="0">
+					</div>
+					<div class="item">
+						<img
+							src="http://placehold.it/600/e91e63/000000&amp;text=Second+Slide"
+							class="img-responsive" data-target="#carousel-main"
+							data-slide-to="1">
+					</div>
+					<div class="item">
+						<img
+							src="http://placehold.it/600/9c27b0/000000&amp;text=Third+Slide"
+							class="img-responsive" data-target="#carousel-main"
+							data-slide-to="2">
+					</div>
+				</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-pager"
+					role="button" data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span> <span
+					class="sr-only">Previous</span>
+				</a> <a class="right carousel-control" href="#carousel-pager"
+					role="button" data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+$('.carousel .vertical .item').each(function(){
+	  var next = $(this).next();
+	  if (!next.length) {
+	    next = $(this).siblings(':first');
+	  }
+	  next.children(':first-child').clone().appendTo($(this));
+	  
+	  for (var i=1;i<2;i++) {
+	    next=next.next();
+	    if (!next.length) {
+	    	next = $(this).siblings(':first');
+	  	}
+	    
+	    next.children(':first-child').clone().appendTo($(this));
+	  }
+	});
+
+</script>
+
+
+<!-- test change end -->
+
+</div>
+</div>

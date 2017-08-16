@@ -18,6 +18,9 @@ import com.std.common.tracelog.EventLogManager;
 import com.std.common.util.Constant;
 
 import java.text.SimpleDateFormat;
+
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -81,7 +84,14 @@ public abstract class APIUtil {
             throw new ApplicationException(ex.getCause());
         }        
     }
-    
+    public Cookie createCookie(String cookieName, String cookieValue) {
+        Cookie cookie = new Cookie(cookieName, cookieValue);
+        cookie.setPath("/");
+        cookie.setMaxAge(-1);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        return cookie;
+    }
     //
     // Reponse status
     //

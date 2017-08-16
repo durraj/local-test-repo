@@ -42,6 +42,11 @@ public class DealServiceImpl implements DealService{
 	public DealDTO findDealBySeoName(String seoName) {
 		return dealRepository.findDealBySeoName(seoName);
 	}
+
+	@Override
+	public List<DealDTO> FindDealsByCategoryId(int catId) {
+		return dealRepository.FindDealsByCategoryId(catId);
+	}
 	
 	
 	

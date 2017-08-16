@@ -17,4 +17,5 @@ public interface DealService {
 	Page<DealDTO> findAll(int pageNum, int noOfRec);
     DealDTO findDealByDealId(int dealId);
     DealDTO findDealBySeoName(String seoName);
+    List<DealDTO> FindDealsByCategoryId(int catId);
 }

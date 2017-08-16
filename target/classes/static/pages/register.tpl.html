@@ -1,0 +1,161 @@
+<!-- <div class="alert alert-danger" ng-show="controller.error">
+    There was a problem logging in. Please try again.
+</div>
+<div class="panel panel-primary" ng-controller="RegisterCtrl as registerCtrl">
+    <div class="panel-heading">
+        <h3 class="panel-title">Register</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" name="registerForm">     
+            <div class="row">				
+				  <div class="col-md-6">
+				
+					<div class="form-group">                
+		                <label for="firstName" class="col-sm-3 control-label">First name</label>
+		                <div class="col-sm-9">
+		                    <input type="text" class="form-control" id="firstName" placeholder="First name..."
+		                           ng-model="registerCtrl.model.firstName" required>
+		                </div>
+		            </div>	  
+				  	
+				  	<div class="form-group">
+		                <label for="lastName" class="col-sm-3 control-label">Last name</label>
+		                <div class="col-sm-9">
+		                    <input type="text" class="form-control" id="lastName" placeholder="Last name..."
+		                           ng-model="registerCtrl.model.lastName" required>
+		                </div>
+		            </div>
+		            <div class="form-group">
+				        <label for="username" class="col-sm-3 control-label">Email:</label> 
+				        <div class="col-sm-9">
+				        	<input type="text"
+				            	class="form-control" id="email" name="email" ng-model="registerCtrl.model.email" required/>
+				         </div>
+				    </div>
+		            <div class="form-group">
+				        <label for="password" class="col-sm-3 control-label">Password:</label> 
+				        <div class="col-sm-9">
+	        				<input type="password"
+				            	class="form-control" id="password" name="password" ng-model="registerCtrl.model.password"/>
+			          	</div>
+				    </div>
+				    <div class="form-group">
+				        <label for="password" class="col-sm-3 control-label">Confirm Password:</label>
+						<div class="col-sm-9">
+							<input type="password" class="form-control" id="password"
+								name="password" ng-model="registerCtrl.model.confirmpassword" />
+						</div>
+					</div>	
+				    <div class="form-group">
+		                <div class="col-sm-offset-10 col-sm-12">		                
+		                	<button ng-click="registerCtrl.register()" class="btn btn-primary" ng-disabled="saving"><i ng-show="saving" class="fa fa-refresh fa-spin fa-1x"></i> Register</button>	                    
+		                </div>
+		            </div>				  
+				  </div>
+				</div>      
+        </form>
+    </div>
+</div> -->
+
+<!-- New Start -->
+
+<div class="main" ng-controller="RegisterCtrl as registerCtrl">
+	<div class="container">
+		<div class="col-main">
+			<div class="account-create">
+				<div class="page-title">
+					<h1>NEVER MISS A DEAL</h1>
+				</div>
+				<form method="post" id="myFormContactss" action="">
+					<div class="fieldset">
+						<h2 class="legend">Personal Information</h2>
+						<ul class="form-list">
+							<li class="fields">
+								<div class="customer-name">
+									<div class="field name-firstname">
+										<label for="firstname" class="required"><em>*</em>First
+											Name</label>
+										<div class="input-box">
+											<input type="text" name="firstName" id="firstName" placeholder="First Name" class="input-text" ng-model="registerCtrl.model.firstName" required/>
+										</div>
+									</div>
+									<div class="field name-lastname">
+										<label for="lastname" class="required"><em>*</em>Last
+											Name</label>
+										<div class="input-box">
+										<input type="text" name="lastName" id="lastName" placeholder="Last Name" class="input-text" ng-model="registerCtrl.model.lastName" required/>
+											<!-- <input type="text" name="signup[signup_userlname]" value=""
+												title="Last Name" class="input-text" /> -->
+										</div>
+									</div>
+								</div>
+							</li>
+							<li><label for="email_address" class="required"><em>*</em>Email
+									Address</label>
+								<div class="input-box">
+								<input type="text" name="email" id="email" placeholder="Email Address" class="input-text" ng-model="registerCtrl.model.email" required/>
+									<!-- <input type="text" name="signup[signup_email]"
+										title="Email Address" class="input-text" /> -->
+								</div></li>
+							<!--  <li class="control">
+<div class="input-box">
+<input type="checkbox" name="is_subscribed" title="Sign Up for Newsletter" value="1" id="is_subscribed" class="checkbox" />
+</div>
+<label for="is_subscribed">Sign Up for Newsletter</label>
+</li> -->
+						</ul>
+					</div>
+					<div class="fieldset">
+						<h2 class="legend">Login Information</h2>
+						<ul class="form-list">
+							<li class="fields">
+								<div class="field">
+									<label for="password" class="required"><em>*</em>Password</label>
+									<div class="input-box">
+									<input type="password" class="input-text" id="password" name="password" ng-model="registerCtrl.model.password"/>
+										<!-- <input type="password" name="signup[signup_password]"
+											id="password" title="Password" class="input-text" /> -->
+									</div>
+								</div>
+								<div class="field">
+									<label for="confirmation" class="required"><em>*</em>Confirm
+										Password</label>
+									<div class="input-box">
+									<input type="password" class="input-text required-entry" id="password" name="password" ng-model="registerCtrl.model.confirmpassword" />
+										<!-- <input type="password" name="signup[signup_password]"
+											title="Confirm Password" id="confirmation"
+											class="input-text required-entry" /> --> <br /> <br />
+									</div>
+
+								</div>
+
+								<p>
+									<input type="checkbox" value="1" name="signup[signup_agree]" />
+									You agree to our <a href="/terms-of-use"
+										target="_blank">terms of use</a> and <a
+										href="/privacy-policy" target="_blank">Privacy
+										policy ?</a>
+								</p> <br />
+							</li>
+							<div class="g-recaptcha"
+								data-sitekey="6LdqhwoUAAAAANL7SQ2L6zbqCBA6xxu4snBvN0NA"></div>
+						</ul>
+					</div>
+
+					<div class="buttons-set">
+						<p class="required">* Required Fields</p>
+						<!-- <p class="back-link">
+							<a href="<?=g('base_url')?>signin" class="back-link"><small>&laquo;
+							</small>Back</a>
+						</p> -->
+						<button ng-click="registerCtrl.register()" class="button" ng-disabled="saving"><i ng-show="saving" class="fa fa-refresh fa-spin fa-1x"></i> <!-- Register</button> -->
+						<!-- <button type="submit" title="Submit" id="submitmyFormss"
+							class="button"> -->
+							<span><span>Submit</span></span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

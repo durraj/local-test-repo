@@ -1,6 +1,7 @@
 package com.std.boot.repository;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -21,5 +22,7 @@ public interface DealsRepository extends PagingAndSortingRepository<DealDTO, Str
     DealDTO findDealByDealId(@Param("dealId") int dealId);
 	@Query("SELECT d FROM deal_detail d WHERE d.DealSEOName = :seoName")
     DealDTO findDealBySeoName(@Param("seoName") String seoName);
+	@Query("SELECT d FROM deal_detail d WHERE d.DealCategoryID = :catId and d.EndDate< CURRENT_DATE()")
+	List<DealDTO> FindDealsByCategoryId(@Param("catId") int catId);
 
 }

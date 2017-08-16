@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('CouponMaster.deal.details', [])
+angular.module('CouponMaster.deal.details', ['angular-owl-carousel-2'])
 
 .controller('DealDetailsCtrl', ['$scope', 'util', '$', '$timeout', '$stateParams', 'ShoppingCart', '$http', function ($scope, util, $, $timeout, $stateParams, cart, $http) {
 
@@ -15,10 +15,25 @@ angular.module('CouponMaster.deal.details', [])
             $scope.dataLoading = false;
         });
         
-        /*util.callRequest('relatedDeals/' + $stateParams.productId, "GET").then(function (data) {
-            $scope.reviews = data.result;
-        });*/
+        util.callRequest('relatedDeals/' + $stateParams.dealId, "GET").then(function (data) {
+            $scope.relatedDeals = data;
+        });
     };
+    $scope.properties = {
+            //items: 2,
+            onChange: function () {
+                console.dir(arguments);
+            }
+        };
+
+        $scope.ready = function ($api) {
+            owlAPi = $api;
+        };
+
+        $timeout(function () {
+            console.dir(owlAPi);
+            owlAPi.trigger('next.owl.carousel',[2000]);
+        }, 2000)
     
     /*$scope.insertComment = function () {
         $scope.proComment.productId = $stateParams.productId;
