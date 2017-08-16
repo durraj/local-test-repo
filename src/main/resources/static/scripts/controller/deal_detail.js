@@ -23,11 +23,53 @@ angular.module('CouponMaster.deal.details', ['angular-owl-carousel-2'])
             //items: 2,
             onChange: function () {
                 console.dir(arguments);
-            }
+            },
+		    loop:true,
+		    margin:10,
+		    responsiveClass:true,
+		    responsive:{
+		        0:{
+		            items:1,
+		            nav:true
+		        },
+		        600:{
+		            items:2,
+		            nav:false
+		        },
+		        1000:{
+		            items:4,
+		            nav:true,
+		            loop:false
+		        }
+		    }
         };
+    $scope.relatedproperties = {
+    		onChange: function () {
+                console.dir(arguments);
+            },
+    		loop:true,
+		    margin:10,
+		    responsiveClass:true,
+		    responsive:{
+		        0:{
+		            items:1,
+		            nav:true
+		        },
+		        600:{
+		            items:1,
+		            nav:false
+		        },
+		        1000:{
+		            items:1,
+		            nav:true,
+		            loop:false
+		        }
+		    }
+    };
 
         $scope.ready = function ($api) {
             owlAPi = $api;
+            
         };
 
         $timeout(function () {

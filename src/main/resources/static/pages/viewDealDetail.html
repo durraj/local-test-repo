@@ -81,14 +81,14 @@
 												src="{{relatedDeal.merchant_logo_url}}"
 												alt="{{relatedDeal.deal_title}}">
 											</a>
-											<div class="box-hover">
+											<!-- <div class="box-hover">
 												<ul class="add-to-links">
 													<li><a
 														href="https://www.suckthatdeal.com/product/Save-38-off-on-Steve-Jobs-by-Walter-Isaacson-Flipkart"
 														class="link-quickview">Quick View</a></li>
 
 												</ul>
-											</div>
+											</div> -->
 										</div>
 										<div class="des-container">
 											<h2 class="product-name">
@@ -100,55 +100,6 @@
 									</div>
 				    </div>
 				</ng-owl-carousel>
-					<!-- <div class="owl-wrapper-outer">
-						<div class="owl-wrapper"
-							style="width: 11414px; left: 0px; display: block;">
-							<div class="owl-item" style="width: 439px;"> -->
-								<div class="productslider-item item">
-									<div class="item-inner" style="width: 200px !important;">
-										<div class="images-container">
-											<div class="product_icon"></div>
-											<a
-												href="https://www.suckthatdeal.com/product/Save-38-off-on-Steve-Jobs-by-Walter-Isaacson-Flipkart"
-												title="Save 38% off on Steve Jobs by Walter Isaacson @ Flipkart"
-												class="product-image"> <img
-												src="https://www.suckthatdeal.com/assets/uploads/product/stevejobsbookcompressed149565762110.jpg"
-												style=""
-												alt="Save 38% off on Steve Jobs by Walter Isaacson @ Flipkart">
-											</a>
-											<div class="box-hover">
-												<ul class="add-to-links">
-													<li><a
-														href="https://www.suckthatdeal.com/product/Save-38-off-on-Steve-Jobs-by-Walter-Isaacson-Flipkart"
-														class="link-quickview">Quick View</a></li>
-
-												</ul>
-											</div>
-										</div>
-										<div class="des-container">
-											<h2 class="product-name">
-												<a
-													href="https://www.suckthatdeal.com/product/Save-38-off-on-Steve-Jobs-by-Walter-Isaacson-Flipkart"
-													title="Save 38% off on Steve Jobs by Walter Isaacson @ Flipkart">Save
-													38% off on Steve Jobs by Walter Isaacson @ Flipkart</a>
-											</h2>
-											<div class="price-box">
-												<p class="special-price">
-													<span class="price-label">Special Price</span> <span
-														class="price">â‚¹ 340.00</span>
-												</p>
-												<p class="old-price">
-													<span class="price-label">Regular Price: </span> <span
-														class="price">â‚¹ 550.00</span>
-												</p>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							<!-- </div>
-						</div>
-					</div>   -->
 				</div>
 			</div>
 		</div>
@@ -162,9 +113,10 @@
 			</div>
 			<div id="special-offer" class="owl-container" >
 				<div class="owl">
-								<div class="sepecialoffer-item item">
+				<ng-owl-carousel class="owl-theme " owl-items="relatedDeals.result" owl-properties="relatedproperties" owl-ready="ready($api)">
+					<div class="sepecialoffer-item item" data-ng-repeat="relatedDeal in relatedDeals.result">
 									<!-- <div class="item-inner first" ng-repeat="relatedDeal in relatedDeals.result"> -->
-									<div class="item-inner first" dir-paginate="relatedDeal in relatedDeals.result| itemsPerPage: 5">
+									<div class="item-inner first" >
 										<div class="images-container">
 											<a
 												href=""
@@ -192,6 +144,8 @@
 										</div>
 						</div>
 					</div>
+				</ng-owl-carousel>
+								
 
 
 
@@ -372,6 +326,5 @@ $('.carousel .vertical .item').each(function(){
  -->
 
 <!-- test change end -->
-
 </div>
 </div>
