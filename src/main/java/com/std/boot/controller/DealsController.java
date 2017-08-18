@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,6 +62,8 @@ public class DealsController extends APIUtil{
 			deal.setId(UniqueID.getUUID());
 			deal.setDealSEOName(slg.slugify(deal.getDealTitle()));
 			boolean dealExist = dealService.findDealByDealId(deal.getDealId())==null?false:true;
+			//dealService.findDealBySeoName(deal.getDealSEOName())
+			
 			if(dealExist){
 				LOGGER.debug("Deal Already exits with deal id: "+deal.getDealId()+" & Deal Name :"
 						+deal.getDealTitle());
@@ -156,10 +161,14 @@ public class DealsController extends APIUtil{
 	return writeObjectToJson(statusResponse);
 }
 	@RequestMapping(value = "/dealDetail/{dealId}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
-	public String dealDetails(@PathVariable("dealId") String dealId) {
+	public String dealDetails(@PathVariable("dealId") String dealId,HttpServletRequest request,
+			HttpServletResponse response) {
 		DealDTO deal = dealService.findDealBySeoName(dealId);
 		statusResponse = new StatusResponse(APIStatus.OK.getCode(), deal);
-		//super.createCookie("deals-browsed", dealId);
+		Cookie cookie =super.createCookie("deals-browsed", dealId,request);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(HttpHeaders.SET_COOKIE, cookie.toString());
+		response.addCookie(cookie);
 		return writeObjectToJson(statusResponse);
 		
 	}
@@ -168,6 +177,14 @@ public class DealsController extends APIUtil{
 		DealDTO deal = dealService.findDealBySeoName(dealId);
 		int dealCatId = deal.getDealCategoryID();
 		List<DealDTO> relatedDeals = dealService.FindDealsByCategoryId(dealCatId);
+		for(DealDTO relatedDeal:relatedDeals)
+		{
+			if(deal.getDealId()==relatedDeal.getDealId())
+			{
+				relatedDeals.remove(relatedDeal);
+				break;
+			}
+		}
 		statusResponse = new StatusResponse(APIStatus.OK.getCode(), relatedDeals);
 		//super.createCookie("deals-browsed", dealId);
 		return writeObjectToJson(statusResponse);

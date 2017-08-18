@@ -47,6 +47,10 @@ public class DealDTO {
 	private String id;
 	@Setter
 	@Getter
+	@Basic(optional = false)
+	private String createdOn;
+	@Setter
+	@Getter
 	@JsonProperty
 	@Basic(optional = false)
     @Column(name = "deal_id")
@@ -266,4 +270,11 @@ public class DealDTO {
 	public void setDealSEOName(String dealSEOName) {
 		DealSEOName = dealSEOName;
 	}
+	public String getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
+	
 }

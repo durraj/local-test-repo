@@ -47,7 +47,20 @@ angular.module('CouponMaster.deal.details', ['angular-owl-carousel-2'])
     		onChange: function () {
                 console.dir(arguments);
             },
-    		loop:true,
+            autoPlay : false,
+            items : 1,
+            itemsDesktop : [1199,1],
+            itemsDesktopSmall : [991,1],
+            itemsTablet: [767,2],
+            itemsMobile : [480,1],
+            slideSpeed : 3000,
+            paginationSpeed : 3000,
+            rewindSpeed : 3000,
+            navigation : true,
+            stopOnHover : true,
+            pagination : false,
+            scrollPerPage:true
+    		/*loop:true,
 		    margin:10,
 		    responsiveClass:true,
 		    responsive:{
@@ -64,7 +77,7 @@ angular.module('CouponMaster.deal.details', ['angular-owl-carousel-2'])
 		            nav:true,
 		            loop:false
 		        }
-		    }
+		    }*/
     };
 
         $scope.ready = function ($api) {

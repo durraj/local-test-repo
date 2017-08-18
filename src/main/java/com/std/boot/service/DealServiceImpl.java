@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.std.boot.repository.DealsRepository;
@@ -30,7 +31,7 @@ public class DealServiceImpl implements DealService{
 
 	@Override
 	public Page<DealDTO> findAll(int pageNum, int noOfRec) {
-		return dealRepository.findAll(new PageRequest(pageNum, noOfRec));
+		return dealRepository.findAll(new PageRequest(pageNum, noOfRec,Sort.Direction.DESC,"createdOn"));
 	}
 
 	@Override

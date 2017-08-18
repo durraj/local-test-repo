@@ -20,6 +20,7 @@ import com.std.common.util.Constant;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -84,8 +85,34 @@ public abstract class APIUtil {
             throw new ApplicationException(ex.getCause());
         }        
     }
-    public Cookie createCookie(String cookieName, String cookieValue) {
-        Cookie cookie = new Cookie(cookieName, cookieValue);
+    public Cookie createCookie(String cookieName, String cookieValue, HttpServletRequest request) {
+        Cookie[] allCookies = request.getCookies();
+        Cookie cookie = null;
+        if(allCookies!=null)
+        {
+        	for (int i = 0; i < allCookies.length; i++) {
+        		String name = allCookies[i].getName();
+        		// String value = allCookies[i].getValue();
+        		if(cookieName.equals(name))
+        		{
+        			cookie = allCookies[i];
+        			break;
+        		}
+        	}
+        }
+        if(cookie == null)
+        {
+        	cookie = new Cookie(cookieName, "");
+        }
+        String value=cookie.getValue();
+        if(!value.isEmpty())
+        {
+        	value = value.concat(",").concat(value);
+        }else
+        {
+        	value=value.concat(value);
+        }
+        cookie.setValue(value);
         cookie.setPath("/");
         cookie.setMaxAge(-1);
         cookie.setHttpOnly(true);

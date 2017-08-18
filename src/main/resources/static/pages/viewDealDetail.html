@@ -114,7 +114,7 @@
 			<div id="special-offer" class="owl-container" >
 				<div class="owl">
 				<ng-owl-carousel class="owl-theme " owl-items="relatedDeals.result" owl-properties="relatedproperties" owl-ready="ready($api)">
-					<div class="sepecialoffer-item item" data-ng-repeat="relatedDeal in relatedDeals.result">
+					<div class="sepecialoffer-item item" dir-paginate="relatedDeal in relatedDeals.result | itemsPerPage: 3 ">
 									<!-- <div class="item-inner first" ng-repeat="relatedDeal in relatedDeals.result"> -->
 									<div class="item-inner first" >
 										<div class="images-container">
@@ -145,20 +145,6 @@
 						</div>
 					</div>
 				</ng-owl-carousel>
-								
-
-
-
-
-
-
-
-					<!-- <div class="owl-controls clickable">
-						<div class="owl-buttons">
-							<div class="owl-prev">prev</div>
-							<div class="owl-next">next</div>
-						</div>
-					</div> -->
 				</div>
 			</div>
 			<!-- /.owl-container -->
