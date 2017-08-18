@@ -82,6 +82,7 @@ CREATE TABLE `app_user_role` (
   category_name VARCHAR(255) default NULL,
   start_date datetime DEFAULT NULL,
   end_date datetime DEFAULT NULL,
+  Created_On timestamp NOT NULL DEFAULT current_timestamp,
   PRIMARY KEY (id))ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
   DROP TABLE IF EXISTS `users`;
